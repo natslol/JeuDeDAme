@@ -1,0 +1,37 @@
+body {
+   background-color: #302e2b;
+}
+
+
+.initdiv {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7%;
+}
+
+.divcase {
+    height: 80px;
+    width: 80px;
+    margin-bottom: -6px;
+    display: inline-block;
+}
+
+.casebeige {
+    background-color: #ebecd0;
+}
+
+.casenoir {
+    background-color: #739552;
+}
+
+.pion {
+    position: absolute;
+    border: hidden;
+    object-fit: contain;
+}
+
+
+/* .sltcv {
+    border: 2px solid green
+} */
