@@ -12,7 +12,7 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
     dragged = ev.target
 }
-  
+
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
@@ -20,7 +20,7 @@ function drop(ev) {
     var num_pion = parseInt(dragged.getAttribute("data-index-number"))
     if (dragged.getAttribute("name") == "pion_noir") {
         if (ev.target.getAttribute("class") == "divcase casenoir") {
-            if(num_pion == nb_case - 11 ) {
+            if (num_pion == nb_case - 11) {
                 dragged.setAttribute("data-index-number", nb_case)
                 ev.target.appendChild(document.getElementById(data));
             } else if (num_pion == nb_case - 9) {
@@ -30,7 +30,7 @@ function drop(ev) {
         }
     } else if (dragged.getAttribute("name") == "pion_blanc") {
         if (ev.target.getAttribute("class") == "divcase casenoir") {
-            if(num_pion == nb_case + 11 ) {
+            if (num_pion == nb_case + 11) {
                 dragged.setAttribute("data-index-number", nb_case)
                 ev.target.appendChild(document.getElementById(data));
             } else if (num_pion == nb_case + 9) {
@@ -42,7 +42,7 @@ function drop(ev) {
 }
 
 function can_caught(ev) {
-    
+
 }
 
 
