@@ -42,7 +42,7 @@ function tourNoir() {
     pTour.innerHTML = "Au tour des Noirs"
     ctx.fillStyle = "#5c5957";
     ctx.strokeStyle = "#5c5957"
-    ctx.lineWidth = 3
+    ctx.lineWidth = 4
     ctx.stroke()
     ctx.fill();
 }
