@@ -23,7 +23,11 @@
 .pion {
     position: absolute;
     border: hidden;
-    object-fit: contain;
+}
+
+#pion_div {
+    position: absolute;
+    border: hidden;
 
 }
 

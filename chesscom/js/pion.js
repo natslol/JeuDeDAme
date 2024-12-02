@@ -27,7 +27,6 @@ casediv.forEach((element) => {
         ctx.fill();
         element.appendChild(pion)
         j++
-
     } else if (i % 2 == 0 && i >= 66 && element.getAttribute("class") == "divcase casenoir") {
         pion.classList.add("pion")
         pion.setAttribute('id', 'pion-case-' + n_case)

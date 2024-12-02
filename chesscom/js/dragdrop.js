@@ -14,6 +14,7 @@ function drag(ev) {
 
 function drop(ev) {
     ev.preventDefault();
+    
     var data = ev.dataTransfer.getData("text");
     var nb_case = parseInt(ev.target.getAttribute("data-case-number"));
     console.log(nb_case);
@@ -29,6 +30,7 @@ function drop(ev) {
                 ev.target.appendChild(document.getElementById(data));
                 tourBlanc()
             } else if (num_pion == nb_case - 22) {
+                dragged.setAttribute("data-index-number", nb_case)
                 var case_avant = document.querySelectorAll(`[data-case-number="${nb_case - 11}"]`)[0]
                 if (case_avant.firstChild) {
                     if (case_avant.firstChild.getAttribute("name") == "pion_blanc") {
@@ -38,6 +40,7 @@ function drop(ev) {
                     }
                 }
             } else if (num_pion == nb_case - 18) {
+                dragged.setAttribute("data-index-number", nb_case)
                 var case_avant = document.querySelectorAll(`[data-case-number="${nb_case - 9}"]`)[0]
                 if (case_avant.firstChild) {
                     if (case_avant.firstChild.getAttribute("name") == "pion_blanc") {
@@ -60,6 +63,7 @@ function drop(ev) {
                 ev.target.appendChild(document.getElementById(data));
                 tourNoir()
             } else if (num_pion == nb_case + 22) {
+                dragged.setAttribute("data-index-number", nb_case)
                 var case_avant = document.querySelectorAll(`[data-case-number="${nb_case + 11}"]`)[0]
                 if (case_avant.firstChild) {
                     if (case_avant.firstChild.getAttribute("name") == "pion_noir") {
@@ -69,6 +73,7 @@ function drop(ev) {
                     }
                 }
             } else if (num_pion == nb_case + 18) {
+                dragged.setAttribute("data-index-number", nb_case)
                 var case_avant = document.querySelectorAll(`[data-case-number="${nb_case + 9}"]`)[0]
                 if (case_avant.firstChild) {
                     if (case_avant.firstChild.getAttribute("name") == "pion_noir") {
@@ -81,13 +86,6 @@ function drop(ev) {
         }
     }
 }
-
-function can_caught(ev) {
-    if(ev.target.parentElement) {
-        console.log("sltcv");
-    }
-}
-
 
 
 
