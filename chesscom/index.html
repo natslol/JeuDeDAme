@@ -24,16 +24,18 @@ for (let i = 0; i < 10; i++) {
             initialize_div.appendChild(casediv)
         } else {
             casediv.classList.add("divcase")
-            casediv.setAttribute("data-index-number", k)
+            casediv.setAttribute("data-case-number", k)
             initialize_div.appendChild(casediv)
             k++
         }
     }
 }
 </script>
-<script src="js/color.js" type="text/javascript"></script>
+<script src="js/case.js" type="text/javascript"></script>
 <script src="js/pion.js" type="text/javascript"></script>
 <script src="js/dragdrop.js" type="text/javascript"></script>
+<script src="js/tourpartour.js" type="text/javascript"></script>
+<script type="text/javascript">tourBlanc()</script>
 </body>
 </html>
 

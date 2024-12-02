@@ -5,7 +5,7 @@ var j = 0
 casediv.forEach((element) => {
     var pion = document.createElement('canvas')
     var ctx = pion.getContext("2d")
-    var n_case = parseInt(element.getAttribute('data-index-number'))
+    var n_case = parseInt(element.getAttribute('data-case-number'))
 
     canvas_attr.forEach((elem) => {
         pion.setAttribute(elem[0], elem[1])

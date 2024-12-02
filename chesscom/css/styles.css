@@ -30,7 +30,9 @@ body {
     object-fit: contain;
 }
 
-
+.byebye {
+    display: none;
+}
 /* .sltcv {
     border: 2px solid green
 } */
