@@ -87,14 +87,16 @@ function drop(ev) {
                     }
                 }
                 if (pions.length == 0) {
-                    dragged.setAttribute("data-index-number", nb_case)
-                    dragged.setAttribute('draggable', 'false')
-                    moved()
-                    ev.target.appendChild(document.getElementById(data));
+                    if(eaten == false) {
+                        dragged.setAttribute("data-index-number", nb_case)
+                        dragged.setAttribute('draggable', 'false')
+                        moved()
+                        ev.target.appendChild(document.getElementById(data));
+                    }
                 } else if (pions.length == 1) {
+                    eaten = true
                     eated.push(pions[0])
                     dragged.setAttribute("data-index-number", nb_case)
-                    dragged.setAttribute('draggable', 'false')
                     moved()
                     ev.target.appendChild(document.getElementById(data));
                 }
@@ -128,7 +130,6 @@ function drop(ev) {
                 } else if (pions.length == 1) {
                     eated.push(pions[0])
                     dragged.setAttribute("data-index-number", nb_case)
-                    dragged.setAttribute('draggable', 'false')
                     moved()
                     ev.target.appendChild(document.getElementById(data));
                 }
