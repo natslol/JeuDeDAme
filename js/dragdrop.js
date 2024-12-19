@@ -31,6 +31,8 @@ function drop(ev) {
                     dragged.setAttribute('draggable', 'false')
                     moved()
                     devientDameOuPas(ev.target)
+                    tourNoir()
+                    ifBlancWin()
                     ev.target.appendChild(document.getElementById(data));
                 }
             } else if ((num_pion == nb_case - 11 || num_pion == nb_case - 9) && dragged.getAttribute("name") == "pion_noir") {
@@ -39,6 +41,8 @@ function drop(ev) {
                     dragged.setAttribute('draggable', 'false')
                     moved()
                     devientDameOuPas(ev.target)
+                    tourBlanc()
+                    ifNoirWin()
                     ev.target.appendChild(document.getElementById(data));
                 }
             } else if (num_pion == nb_case - 22 || num_pion == nb_case - 18 || num_pion == nb_case + 22 || num_pion == nb_case + 18) {
@@ -50,6 +54,8 @@ function drop(ev) {
                     if (case_avant.firstChild.getAttribute("name") != dragged.getAttribute("name")) {
                         eated.push(case_avant.firstChild)
                         moved()
+                        ifNoirWin()
+                        ifBlancWin()
                         devientDameOuPas(ev.target)
                         ev.target.appendChild(document.getElementById(data));
                    }
@@ -88,12 +94,21 @@ function drop(ev) {
                 }
                 if (pions.length == 0) {
                     if(eaten == false) {
+                        if(dragged.getAttribute("name") == "pion_noir") {
+                            ifNoirWin()
+                            tourBlanc()
+                        } else if (dragged.getAttribute("name") == "pion_blanc") {
+                            ifBlancWin()
+                            tourNoir()
+                        }
                         dragged.setAttribute("data-index-number", nb_case)
                         dragged.setAttribute('draggable', 'false')
                         moved()
                         ev.target.appendChild(document.getElementById(data));
                     }
                 } else if (pions.length == 1) {
+                    ifNoirWin()
+                    ifBlancWin()
                     eaten = true
                     eated.push(pions[0])
                     dragged.setAttribute("data-index-number", nb_case)
@@ -123,11 +138,23 @@ function drop(ev) {
                     }
                 }
                 if (pions.length == 0) {
-                    dragged.setAttribute("data-index-number", nb_case)
-                    dragged.setAttribute('draggable', 'false')
-                    moved()
-                    ev.target.appendChild(document.getElementById(data));
+                    if(eaten == false) {
+                        if(dragged.getAttribute("name") == "pion_noir") {
+                            ifNoirWin()
+                            tourBlanc()
+                        } else if (dragged.getAttribute("name") == "pion_blanc") {
+                            ifBlancWin()
+                            tourNoir()
+                        }
+                        dragged.setAttribute("data-index-number", nb_case)
+                        dragged.setAttribute('draggable', 'false')
+                        moved()
+                        ev.target.appendChild(document.getElementById(data));
+                    }
                 } else if (pions.length == 1) {
+                    ifNoirWin()
+                    ifBlancWin()
+                    eaten = true
                     eated.push(pions[0])
                     dragged.setAttribute("data-index-number", nb_case)
                     moved()
@@ -143,16 +170,18 @@ var tourBlancOuPas = true
 
 document.addEventListener('keyup', event => {
     if (event.code == "Space") {
-        eaten = false
-        eated.forEach((element) => {
-            element.remove()
-        })
-        eated.length = 0
-        if (tourBlancOuPas === true) {
-            tourNoir()
-
-        } else if (tourBlancOuPas === false) {
-            tourBlanc()
+        if (eaten == true) {
+            eaten = false
+            eated.forEach((element) => {
+                element.remove()
+            })
+            eated.length = 0
+            if (tourBlancOuPas === true) {
+                tourNoir()
+    
+            } else if (tourBlancOuPas === false) {
+                tourBlanc()
+            }
         }
     }
 })
@@ -171,7 +200,7 @@ function devientDameOuPas(casedame) {
     if (dragged.getAttribute("name") == "pion_blanc") {
         if ((case_number >= 0 && case_number <= 9)) {
             dragged.setAttribute('data-type', "dame")
-            ctx.font = "40px TourFout"
+            ctx.font = "40px TourFont"
             ctx.textAlign = "center";
             ctx.fillStyle = "#000000"
             ctx.fillText("D", 37.5, 55)
@@ -179,7 +208,7 @@ function devientDameOuPas(casedame) {
     } if (dragged.getAttribute("name") == "pion_noir") {
         if ((case_number >= 90 && case_number <= 99)) {
             dragged.setAttribute('data-type', "dame")
-            ctx.font = "40px TourFout"
+            ctx.font = "40px TourFont"
             ctx.textAlign = "center";
             ctx.fillStyle = "#ffffff"
             ctx.fillText("D", 37.5, 55)
